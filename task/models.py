@@ -4,9 +4,8 @@ from django.db import models
 
 class Task(models.Model):
     title = models.CharField(max_length=64)
-    description = models.TextField()
-    completed = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True, auto_created=True)
+    completed = models.BooleanField(default=False, db_default=False)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
