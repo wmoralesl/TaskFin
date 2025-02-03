@@ -36,7 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "daphne",  # Servidor ASGI
+    "channels",
     'django.contrib.staticfiles',
+    
     'corsheaders',
     'task',
     'rest_framework',
@@ -72,6 +75,18 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'myapp.wsgi.application'
+
+ASGI_APPLICATION = "myapp.asgi.application"  # Reemplaza con el nombre de tu proyecto
+
+# Configuración de canales
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 
 # Database
